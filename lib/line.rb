@@ -8,7 +8,7 @@ class Line
 
 	def to_s
 		str = @character_arr.join()
-		str += " ILLEGAL" if is_illegal?
+		str += " ILLEGAL" if illegal?(str)
 		str
 	end
 
@@ -21,17 +21,17 @@ class Line
 		end
 
 		def seven_segment_char(input_lines, col_i)
-			seven_segment_arr = ""
-			seven_segment_arr << @input_lines[FIRST_LINE][col_i+1]
+			seven_segment_arr = []
+			seven_segment_arr << input_lines[FIRST_LINE][col_i+1]
 			(1..2).each do |r|
 				(0...3).each do |c|
-					seven_segment_arr << @input_lines[r][col_i+c]
+					seven_segment_arr << input_lines[r][col_i+c]
 				end
 			end
 			seven_segment_arr
 		end
 
-		def is_illegal?
-			@character_arr.any? {|c| c.is_a?(IllegalCharacter)}
+		def illegal?(str)
+			str.include?("?")
 		end
 end

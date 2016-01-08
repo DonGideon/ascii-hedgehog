@@ -24,7 +24,7 @@ class Character
 	private
 
 		def seven_segment_binary(char_arr)
-			char_arr.inject(""){|c, seven_segment| seven_segment << char_space?(c); seven_segment}
+			char_arr.inject(""){|seven_segment, c| seven_segment << char_space?(c); seven_segment}
 		end
 
 		def char_space?(char)
