@@ -14,9 +14,4 @@ class FileManager
 	def write(output_file_name)
 		File.open("./output_files/#{output_file_name}","a") { |f| @output_lines.each {|l| f.puts(l.to_s)} }
 	end
-
-	private
-
-		
-
 end

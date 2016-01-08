@@ -1,13 +1,13 @@
 require "./lib/file_manager"
 	
 	def parse_file(file_name)
-		# begin
+		begin
 			file_manager = FileManager.new(file_name)
 			file_manager.write(output_name(file_name))
 			p "'#{file_name}' was parsed. wow, so fast, much parse, such digits"
-		# rescue => error
-		# 	p "oh no, #{error.inspect}"
-		# end
+		rescue => error
+			p "oh no, #{error.inspect}"
+		end
 	end
 
 	def output_name(input_file_name)
