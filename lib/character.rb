@@ -1,5 +1,5 @@
 class Character
-		7_SEGMENT_TO_DECIMAL = {
+		SEVEN_SEGMENT_TO_DECIMAL = {
 			"1101111" => "0",
 			"0001001" => "1",
 			"1011110" => "2",
@@ -13,11 +13,21 @@ class Character
 		}
 		ILEGAL_CHARACTER = "?"
 
-	def initialize(7_segment)
-		@char = char
+	def initialize(seven_segment_arr)
+		@char = SEVEN_SEGMENT_TO_DECIMAL[seven_segment_binary(seven_segment_arr)] || ILEGAL_CHARACTER
 	end
 
 	def to_s
 		@char
 	end
+
+	private
+
+		def seven_segment_binary(char_arr)
+			char_arr.inject(""){|c, seven_segment| seven_segment << char_space?(c); seven_segment}
+		end
+
+		def char_space?(char)
+			char == " " ? "0" : "1"
+		end
 end

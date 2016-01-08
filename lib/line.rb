@@ -1,16 +1,9 @@
 class Line
+	FIRST_LINE = 0
 
-	def initialize 
-		@input_lines = []
+	def initialize(input_lines)
 		@character_arr = []
-	end
-
-	def add_input_line(input_line)
-		@input_lines << input_line
-	end
-
-	def convert_input_lines_to_output
-		input_lines_to_characters
+		input_lines_to_characters(input_lines)
 	end
 
 	def to_s
@@ -21,25 +14,21 @@ class Line
 
 	private
 
-		def input_lines_to_characters
+		def input_lines_to_characters(input_lines)
 			(0...27).step(3).each do |col_i|
-				new_character(input_lines_to_character(col_i))
+				@character_arr << Character.new(seven_segment_char(input_lines, col_i))
 			end
 		end
 
-		def input_lines_to_character(col_i)
-			binary_string = ""
-			binary_string << empty_string_to_binary(@input_lines[0][col_i+1])
+		def seven_segment_char(input_lines, col_i)
+			seven_segment_arr = ""
+			seven_segment_arr << @input_lines[FIRST_LINE][col_i+1]
 			(1..2).each do |r|
 				(0...3).each do |c|
-					binary_string << empty_string_to_binary(@input_lines[r][col_i+c])
+					seven_segment_arr << @input_lines[r][col_i+c]
 				end
 			end
-			binary_string
-		end
-
-		def new_character(binary_str)
-			@character_arr << CharacterFactory.character_from_binary(binary_str)
+			seven_segment_arr
 		end
 
 		def is_illegal?
