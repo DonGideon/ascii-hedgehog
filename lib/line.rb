@@ -38,10 +38,6 @@ class Line
 			binary_string
 		end
 
-		def empty_string_to_binary(str)
-			str.strip.length == 0 ? "0" : "1"
-		end
-
 		def new_character(binary_str)
 			@character_arr << CharacterFactory.character_from_binary(binary_str)
 		end

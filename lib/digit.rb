@@ -1,2 +1,0 @@
-class Digit < Character
-end
