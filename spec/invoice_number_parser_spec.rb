@@ -1,6 +1,6 @@
-# require 'invoice_number_parser'
+# require 'file_manager'
 
-# describe InvoiceNumberParser do
+# describe FileManager do
 # 	before(:each) do
 # 		File.open("./output_files/output_spec.txt","w"){}
 # 	end
